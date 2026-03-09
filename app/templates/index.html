@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <p>A simple FastAPI app for testing development in a Podman dev container on Fedora Silverblue.</p>
+        
+        <div id="info-box">
+            Click the button to fetch info from the server.
+        </div>
+        
+        <button id="fetch-btn">Fetch Random Info</button>
+    </div>
+
+    <script>
+        document.getElementById('fetch-btn').onclick = function() {
+            const infoBox = document.getElementById('info-box');
+            infoBox.textContent = 'Fetching...';
+            
+            fetch('/random-info')
+                .then(response => response.json())
+                .then(data => {
+                    infoBox.textContent = data.data;
+                })
+                .catch(error => {
+                    infoBox.textContent = 'Error fetching data';
+                    console.error('Error:', error);
+                });
+        };
+    </script>
+</body>
+</html>
