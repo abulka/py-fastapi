@@ -1,5 +1,5 @@
 {
-	"name": "Python 3 FastAPI (Podman)",
+	"name": "Python 3 FastAPI (Docker)",
 	"image": "mcr.microsoft.com/devcontainers/python:3",
 	"containerEnv": {
 		"PIP_USER": "true"
@@ -16,9 +16,5 @@
 	"forwardPorts": [8000],
 	"postCreateCommand": "pip install --user -r requirements.txt",
 	"remoteUser": "vscode",
-	"runArgs": [
-		"--userns=keep-id",
-		"--security-opt", "label=disable"
-	],
-	"postStartCommand": "/home/vscode/.local/bin/uvicorn app.main:app --reload --host 0.0.0.0"
+	// "postStartCommand": "/home/vscode/.local/bin/uvicorn app.main:app --reload --host 0.0.0.0"
 }
