@@ -2,3 +2,6 @@ fastapi
 uvicorn[standard]
 jinja2
 python-multipart
+
+# Only needed if you use the python 3.14 ms devcontainer - see # Python 3.14 in README.md
+# debugpy

@@ -3,12 +3,11 @@
     "configurations": [
         {
             "name": "Python: FastAPI (Uvicorn)",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "module": "uvicorn",
             "args": [
                 "app.main:app",
-                "--reload",
                 "--host",
                 "0.0.0.0"
             ],

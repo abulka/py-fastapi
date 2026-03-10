@@ -131,3 +131,19 @@ INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
 INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
 INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
 ```
+
+# Appendix: Python 3.14 in Dev Containers
+
+The `mcr.microsoft.com/devcontainers/python:3` image is a floating tag — as of March 2026 it points to Python 3.14, which is not yet supported by the `debugpy` version bundled in the VS Code Python extension. This causes the launch config to silently fail with no useful error message.
+
+Both the devcontainer base image and the `ms-python.debugpy` extension are maintained by Microsoft, but they are not kept in sync — the image was updated to 3.14 before the extension's bundled debugpy supported it.
+
+**Fix:** Pin to a stable version in `devcontainer.json`:
+
+```json
+"image": "mcr.microsoft.com/devcontainers/python:3.13"
+```
+
+Alternatively, add `debugpy` to `requirements.txt` to install a newer version that overrides the bundled one — but pinning the image is the cleaner fix and prevents the same issue recurring on a future Python bump.
+
+
