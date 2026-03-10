@@ -80,3 +80,25 @@ The `postStartCommand` in the devcontainer configuration (which previously auto-
 3. Wait for the container to build and dependencies to install.
 4. Open the Run and Debug panel, select `Python: FastAPI (Uvicorn)`, and start debugging.
 5. Set breakpoints as needed—these will now be hit during execution.
+
+## Non-Devcontainer Development Using uv (macOS)
+
+If you want to run and debug the FastAPI app natively on macOS without a Dev Container, you can use uv for fast dependency management and execution:
+
+### Setup Steps
+1. **Install uv**
+   - `brew install uv`
+
+2. **Install dependencies**
+   - `uv pip install -r requirements.txt`
+
+3. **Run the FastAPI app**
+   - `uvicorn app.main:app --reload --host 0.0.0.0`
+
+4. **Debugging with VS Code**
+   - Open VS Code in your project folder.
+   - Set breakpoints as needed.
+   - Use the existing `Python: FastAPI (Uvicorn)` launch configuration in `.vscode/launch.json`.
+   - Start debugging from the Run and Debug panel.
+
+> The launch configuration works for both Dev Container and local development. No changes are needed.
