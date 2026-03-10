@@ -1,4 +1,4 @@
-# py-01-first
+# py-fastapi
 
 A Python project designed to test development workflows within Dev Containers, specifically focusing on Podman integration on systems like Fedora Silverblue.
 
