@@ -57,3 +57,26 @@ services:
       - "8000:8000"
     restart: unless-stopped
 ```
+
+# Dev Container Usage
+
+This project supports multiple Dev Containers for both Docker and Podman. You can select which container to use when opening the workspace in VS Code. When multiple devcontainer configurations are present, VS Code will show a popup allowing you to choose between them (e.g., Docker or Podman). Each configuration is located in its respective folder under `.devcontainer/`.
+
+## Running and Debugging
+
+To run and debug the FastAPI app inside the Dev Container:
+- Use the provided launch configuration (`Python: FastAPI (Uvicorn)`) in VS Code. This configuration starts Uvicorn with the debugger attached, enabling breakpoints and interactive debugging.
+- Open the Run and Debug panel in VS Code and select the launch config, then click 'Run' or 'Debug'.
+
+## About `postStartCommand`
+
+The `postStartCommand` in the devcontainer configuration (which previously auto-started Uvicorn) is commented out. This is intentional:
+- When `postStartCommand` is enabled, Uvicorn starts automatically, but breakpoints in VS Code will not work because the debugger is not attached.
+- By commenting it out, you control app startup via the launch configuration, ensuring proper debugging support.
+
+## Quick Steps
+1. Open the workspace in VS Code.
+2. If prompted, select the desired Dev Container (Docker or Podman).
+3. Wait for the container to build and dependencies to install.
+4. Open the Run and Debug panel, select `Python: FastAPI (Uvicorn)`, and start debugging.
+5. Set breakpoints as needed—these will now be hit during execution.
