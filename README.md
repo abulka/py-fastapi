@@ -2,6 +2,8 @@
 
 A Python project designed to test development workflows within Dev Containers, specifically focusing on Podman integration on systems like Fedora Silverblue.
 
+![Screenshot](doco/Screenshot%202026-03-10%20at%206.18.55 pm.png)
+
 ## Development
 
 This project is configured to run in a VS Code Dev Container. 
@@ -90,15 +92,42 @@ If you want to run and debug the FastAPI app natively on macOS without a Dev Con
    - `brew install uv`
 
 2. **Install dependencies**
+   - `uv venv`
    - `uv pip install -r requirements.txt`
 
-3. **Run the FastAPI app**
+Ensure you set the default Python interpreter in VS Code to the one created by uv (`.venv/bin/python`). Hopefully, VS Code will automatically detect it when you open the folder.
+
+4. **Run the FastAPI app**
    - `uvicorn app.main:app --reload --host 0.0.0.0`
 
-4. **Debugging with VS Code**
+5. **Debugging with VS Code**
    - Open VS Code in your project folder.
    - Set breakpoints as needed.
    - Use the existing `Python: FastAPI (Uvicorn)` launch configuration in `.vscode/launch.json`.
    - Start debugging from the Run and Debug panel.
 
 > The launch configuration works for both Dev Container and local development. No changes are needed.
+
+### Example output
+
+When you click the button in the web app to fetch random info, you should see output similar to the following in your terminal where Uvicorn is running:
+
+```
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [6117] using WatchFiles
+INFO:     Started server process [6199]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:49595 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /static/style.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49595 - "GET /random-info HTTP/1.1" 200 OK
+```
